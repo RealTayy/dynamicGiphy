@@ -1,5 +1,67 @@
 html {
+    font-size: 1em;
     background-color: #222;
+}
+
+header {
+    position: fixed;    
+    top: 0;
+    font-size: 1.618em;
+    width: 100%;
+    z-index: 1;
+    opacity: .7;
+}
+
+#banner-img-cointainer {
+    width: 25%;
+    float:left;
+}
+
+#banner-img {
+    width: 100%;
+}
+
+#banner-text {
+    float: left;
+}
+
+#banner {    
+    color: #fff;
+    line-height: 1.618em;
+    width: 75%;
+    float:left;
+    background-color: #000;
+    height: 1.618em;    
+}
+
+#search-bar {
+    float: left;
+    background-color: #fff;
+    width: 200px;
+    height: 1em;
+}
+
+#category-view {
+    width: 75%;
+    float: left;
+    height: 1.618em;
+}
+
+.category-button {
+    position: relative;
+    float: left;
+    margin: calc(.618em / 4);
+    padding: calc(.618em / 4);
+    height: 1em;    
+    background-color: #fff;
+}
+
+.category {
+
+}
+
+section {
+    margin-top: 5.236em;    
 }
 
 .grid {    
