@@ -1,9 +1,15 @@
-.grid {    
-    /* width: 960px; */
+html {
+    background-color: #222;
 }
 
-.grid-item {
+.grid {    
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+}
+
+.grid-sizer, .grid-item {
     float: left;
-    width: 375px;
-    margin: 5px;    
+    width: 24%;
+    margin: .5%;    
 }
