@@ -1,0 +1,9 @@
+.grid {    
+    /* width: 960px; */
+}
+
+.grid-item {
+    float: left;
+    width: 375px;
+    margin: 5px;    
+}
