@@ -46,8 +46,7 @@ header {
 }
 
 #search-input {    
-    margin: 0 1em;
-    padding: calc(.618em / 3) .618em;
+    padding: calc(.618em / 3) 0;
     position: relative;
     float: left;
     top: 0;
@@ -67,7 +66,7 @@ header {
 }
 
 #category-view {
-    padding: 0 1em;
+    heigh: 1em;    
     color: red;
     width: 100%;
     float: left;
