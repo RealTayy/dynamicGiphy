@@ -5,7 +5,7 @@ function display(search, addtionalParameters = '') {
 
     // Intializes Masonry grid layout
     $('.grid').masonry({
-        itemSelector: '.grid-item',        
+        itemSelector: '.grid-item',
         columnWidth: '.grid-sizer',
         percentPosition: true
     });
@@ -39,6 +39,15 @@ function display(search, addtionalParameters = '') {
     });
 }
 
+function addCategory(searchTerm) {
+    var newButton = $('<div>').attr({
+        class: 'category-button'
+    }).data({
+        text: searchTerm
+    }).text(searchTerm);
+    $('#category-view').append(newButton);
+}
+
 $(document).on('click', 'img', function (e) {
     if ($(this).data('triggered')) {
         $(this).data('triggered', false);
@@ -49,4 +58,25 @@ $(document).on('click', 'img', function (e) {
     }
 })
 
+$(document).on('click', '.category-button', function (e) {
+    display($(this).data('text'));
+})
+
+$('#search-button').on('click', function (e) {
+    addCategory($('#search-input').val());
+    display($('#search-input').val());
+    $('#search-input').val('');
+})
+
+$('input').keyup(function (e) {    
+    if (e.keyCode === 13) {
+        addCategory($('#search-input').val());
+        display($('#search-input').val());
+        $('#search-input').val('');
+    }
+});
+
 display('ducks');
+
+var initialCategory = ['Ducks', 'Dogs', 'Cats', 'Swag'];
+initialCategory.forEach(function (i) { addCategory(i) });

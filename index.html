@@ -22,29 +22,35 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/hover.css">
 
     <!-- Load Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- Load Masonry from https://masonry.desandro.com/ -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 
     <!-- Load imagesLoaded from https://imagesloaded.desandro.com/ -->
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+
+    <!-- Load fontAwesome sick fonts icons and stuff WOW SO COOL WOWZA! -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 
 <body>
     <header>
         <div id='banner-img-cointainer'>
-            <img id='banner-img' src='.\assets\images\PoweredBy_640_Horizontal_Light-Backgrounds_With_Logo.gif'/>
+            <div id='banner'>
+                <div id='banner-wrapper'>
+                    <img id='banner-img' src='.\assets\images\PoweredBy_640_Horizontal_Light-Backgrounds_With_Logo.gif' />
+                    <div id='search-bar'>
+                        <input id='search-input' />
+                        <div id='search-button'>
+                            <i class="fas fa-search fa-xs"></i>
+                        </div>
+                    </div>
+                    <div id='category-view'>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id='banner'>            
-            Position of future search bar
-            <div id='search-bar'></div>
-        </div>
-        <div id='category-view'>
-            <div class='category-button'>Test Button 1</div>
-            <div class='category-button'>Test 2</div>
-            <div class='category-button'>Test adsfadsfads 3</div>
-        </div>
-
 
     </header>
     <section class='content'>
