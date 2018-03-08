@@ -1,7 +1,15 @@
-function display(search, addtionalParameters = '') {
-    // Clears current images
-    $('#giphy-view').empty();
-    $('#giphy-view').append($('<div>').attr({ class: "grid-sizer" }));
+function display(search, isNewSearch) {
+    $('#giphy-view').attr('search-term', search);
+    // Clears current images and resets offSet if starting a new search
+    if (isNewSearch) {
+        $('#giphy-view').empty();
+        $('#giphy-view').append($('<div>').attr({ class: "grid-sizer" }));
+        $('#giphy-view').attr('data-off-set', 0);
+    }
+    // Else adds to the current offSet to load new images   
+    else {
+        $('#giphy-view').attr('data-off-set', (parseInt(($('#giphy-view').attr('data-off-set'))) + 25));
+    }    
 
     // Intializes Masonry grid layout
     $('.grid').masonry({
@@ -13,11 +21,10 @@ function display(search, addtionalParameters = '') {
     var queryURL = 'http://api.giphy.com/v1/gifs/search?q=';
     var apiKey = 'rxJdnZS8wGz7tycEkjccy4PuOCwdp4Us';
     var search = search;
-    var addtionalParameters = addtionalParameters;
+    var offSet = '&offset=' + $('#giphy-view').attr('data-off-set');
 
     // Sends AJAX request to Giphy's API and recieves JSON object
-    $.get(queryURL + search + '&api_key=' + apiKey + addtionalParameters).then(function (response) {
-        console.log(response.data[0]); // Delete this line later please                
+    $.get(queryURL + search + '&api_key=' + apiKey + offSet).then(function (response) {        
         response.data.forEach(function (i) {
             var newImg = ($('<img>').attr({
                 class: "grid-item",
@@ -59,24 +66,24 @@ $(document).on('click', 'img', function (e) {
 })
 
 $(document).on('click', '.category-button', function (e) {
-    display($(this).data('text'));
+    display($(this).data('text'), true);
 })
 
 $('#search-button').on('click', function (e) {
     addCategory($('#search-input').val());
-    display($('#search-input').val());
+    display($('#search-input').val(), true);
     $('#search-input').val('');
 })
 
-$('input').keyup(function (e) {    
+$('input').keyup(function (e) {
     if (e.keyCode === 13) {
         addCategory($('#search-input').val());
-        display($('#search-input').val());
+        display($('#search-input').val(), true);
         $('#search-input').val('');
     }
 });
 
-display('ducks');
+display('Ducks', true);
 
 var initialCategory = ['Ducks', 'Dogs', 'Cats', 'Swag'];
 initialCategory.forEach(function (i) { addCategory(i) });
