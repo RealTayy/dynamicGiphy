@@ -18,7 +18,7 @@ function display(search, isNewSearch) {
         percentPosition: true
     });
 
-    var queryURL = 'http://api.giphy.com/v1/gifs/search?q=';
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=';
     var apiKey = 'rxJdnZS8wGz7tycEkjccy4PuOCwdp4Us';
     var search = search;
     var offSet = '&offset=' + $('#giphy-view').attr('data-off-set');
