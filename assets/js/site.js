@@ -9,7 +9,7 @@ function display(search, isNewSearch) {
     // Else adds to the current offSet to load new images   
     else {
         $('#giphy-view').attr('data-off-set', (parseInt(($('#giphy-view').attr('data-off-set'))) + 25));
-    }    
+    }
 
     // Intializes Masonry grid layout
     $('.grid').masonry({
@@ -24,7 +24,7 @@ function display(search, isNewSearch) {
     var offSet = '&offset=' + $('#giphy-view').attr('data-off-set');
 
     // Sends AJAX request to Giphy's API and recieves JSON object
-    $.get(queryURL + search + '&api_key=' + apiKey + offSet).then(function (response) {        
+    $.get(queryURL + search + '&api_key=' + apiKey + offSet).then(function (response) {
         response.data.forEach(function (i) {
             var newImg = ($('<img>').attr({
                 class: "grid-item",
@@ -70,13 +70,15 @@ $(document).on('click', '.category-button', function (e) {
 })
 
 $('#search-button').on('click', function (e) {
-    addCategory($('#search-input').val());
-    display($('#search-input').val(), true);
-    $('#search-input').val('');
+    if ($('#search-input').val() !== '') {
+        addCategory($('#search-input').val());
+        display($('#search-input').val(), true);
+        $('#search-input').val('');
+    }
 })
 
 $('input').keyup(function (e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && $('#search-input').val() !== '') {
         addCategory($('#search-input').val());
         display($('#search-input').val(), true);
         $('#search-input').val('');
@@ -87,3 +89,12 @@ display('Ducks', true);
 
 var initialCategory = ['Ducks', 'Dogs', 'Cats', 'Swag'];
 initialCategory.forEach(function (i) { addCategory(i) });
+
+$(window).on("scroll", function () {
+    var scrollHeight = $(document).height();
+    var scrollPosition = $(window).height() + $(window).scrollTop();
+    if ((scrollHeight - scrollPosition) < 1) {
+        display($('#giphy-view').attr('search-term'), false);
+        $('#giphy-view').attr('search-term');
+    }
+});
